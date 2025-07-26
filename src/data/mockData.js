@@ -1,3 +1,5 @@
+import { tokens } from "../theme.jsx";
+
 export const mockDataTeam = [
   {
     id: 1,
