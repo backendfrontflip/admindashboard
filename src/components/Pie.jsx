@@ -1,3 +1,4 @@
+// src/pages/PieChart.jsx
 import React from "react";
 import { useTheme } from "@mui/material";
 import { Pie } from "react-chartjs-2";
@@ -17,7 +18,7 @@ const PieChart = ({ isDashboard = false }) => {
       {
         label: "Value",
         data: data.map((d) => d.value),
-        backgroundColor: data.map((d, index) => d.color),
+        backgroundColor: data.map((d) => d.color),
         borderColor: colors.primary[500],
         borderWidth: 1,
       },
@@ -26,11 +27,17 @@ const PieChart = ({ isDashboard = false }) => {
 
   const options = {
     responsive: true,
+    maintainAspectRatio: false,
     plugins: {
       legend: {
+        display: true,
         position: isDashboard ? "right" : "bottom",
         labels: {
           color: colors.grey[100],
+          font: {
+            size: isDashboard ? 10 : 12,
+          },
+          boxWidth: isDashboard ? 12 : 20,
         },
       },
       tooltip: {
@@ -43,7 +50,11 @@ const PieChart = ({ isDashboard = false }) => {
     },
   };
 
-  return <Pie data={chartData} options={options} />;
+  return (
+    <div style={{ height: isDashboard ? "250px" : "500px" }}>
+      <Pie data={chartData} options={options} />
+    </div>
+  );
 };
 
 export default PieChart;

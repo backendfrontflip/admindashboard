@@ -1,6 +1,7 @@
-import React from 'react';
-import { Line } from 'react-chartjs-2';
-import { useTheme } from '@mui/material';
+// src/pages/LineChart.jsx
+import React from "react";
+import { Line } from "react-chartjs-2";
+import { useTheme } from "@mui/material";
 import {
   Chart as ChartJS,
   LineElement,
@@ -9,12 +10,20 @@ import {
   Title,
   CategoryScale,
   Tooltip,
-  Legend
-} from 'chart.js';
-import { tokens } from '../theme';
-import { mockLineData } from '../data/mockData';
+  Legend,
+} from "chart.js";
+import { tokens } from "../theme";
+import { mockLineData } from "../data/mockData";
 
-ChartJS.register(LineElement, PointElement, LinearScale, Title, CategoryScale, Tooltip, Legend);
+ChartJS.register(
+  LineElement,
+  PointElement,
+  LinearScale,
+  Title,
+  CategoryScale,
+  Tooltip,
+  Legend
+);
 
 const LineChart = ({ isDashboard = false }) => {
   const theme = useTheme();
@@ -29,36 +38,48 @@ const LineChart = ({ isDashboard = false }) => {
       data: series.data.map((point) => point.y),
       fill: false,
       borderColor: series.color || colors.greenAccent[400],
-      tension: 0.3
-    }))
+      borderWidth: 2,
+      pointBackgroundColor: series.color || colors.greenAccent[400],
+      tension: 0.3,
+    })),
   };
 
   const options = {
     responsive: true,
+    maintainAspectRatio: false,
     plugins: {
       legend: {
         display: !isDashboard,
+        position: "top",
         labels: {
-          color: colors.grey[100]
-        }
+          color: colors.grey[100],
+          font: {
+            size: isDashboard ? 10 : 12,
+          },
+        },
       },
-      title: {
-        display: false
-      }
+      tooltip: {
+        mode: "index",
+        intersect: false,
+      },
     },
     scales: {
       x: {
         ticks: { color: colors.grey[100] },
-        grid: { color: colors.grey[700] }
+        grid: { color: colors.grey[800] },
       },
       y: {
         ticks: { color: colors.grey[100] },
-        grid: { color: colors.grey[700] }
-      }
-    }
+        grid: { color: colors.grey[800] },
+      },
+    },
   };
 
-  return <Line data={chartData} options={options} />;
+  return (
+    <div style={{ height: isDashboard ? "250px" : "500px" }}>
+      <Line data={chartData} options={options} />
+    </div>
+  );
 };
 
 export default LineChart;

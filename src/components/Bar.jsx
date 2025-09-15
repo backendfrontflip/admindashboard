@@ -1,3 +1,4 @@
+// src/pages/BarChart.jsx
 import React from "react";
 import { useTheme } from "@mui/material";
 import {
@@ -12,34 +13,43 @@ import { Bar } from "react-chartjs-2";
 import { tokens } from "../theme";
 import { mockBarData as data } from "../data/mockData";
 
+// Register Chart.js components
 ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend);
 
 const BarChart = ({ isDashboard = false }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
-  // Extract categories
+  // Extract categories (X-axis labels)
   const labels = data.map((item) => item.country);
 
-  // Extract datasets by keys
+  // Datasets keys
   const keys = ["hot dog", "burger", "sandwich", "kebab", "fries", "donut"];
 
+  // Chart.js dataset
   const chartData = {
     labels,
     datasets: keys.map((key, i) => ({
       label: key,
       data: data.map((item) => item[key]),
-      backgroundColor: colors.greenAccent[400 + (i * 100)] || colors.greenAccent[400],
+      backgroundColor:
+        colors.greenAccent[400 + i * 100] || colors.greenAccent[400],
     })),
   };
 
+  // Chart options
   const options = {
     responsive: true,
     plugins: {
       legend: {
+        display: !isDashboard,
         position: "bottom",
         labels: {
           color: colors.grey[100],
+          boxWidth: isDashboard ? 12 : 20,
+          font: {
+            size: isDashboard ? 10 : 12,
+          },
         },
       },
       tooltip: {
@@ -52,6 +62,9 @@ const BarChart = ({ isDashboard = false }) => {
         stacked: false,
         ticks: {
           color: colors.grey[100],
+          font: {
+            size: isDashboard ? 10 : 12,
+          },
         },
         grid: {
           color: colors.grey[800],
@@ -66,6 +79,9 @@ const BarChart = ({ isDashboard = false }) => {
         stacked: false,
         ticks: {
           color: colors.grey[100],
+          font: {
+            size: isDashboard ? 10 : 12,
+          },
         },
         grid: {
           color: colors.grey[800],
@@ -79,7 +95,11 @@ const BarChart = ({ isDashboard = false }) => {
     },
   };
 
-  return <Bar data={chartData} options={options} />;
+  return (
+    <div style={{ height: isDashboard ? "250px" : "500px" }}>
+      <Bar data={chartData} options={options} />
+    </div>
+  );
 };
 
 export default BarChart;

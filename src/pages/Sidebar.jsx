@@ -64,7 +64,6 @@ const Sidebar = () => {
         onToggle={() => setIsCollapsed(!isCollapsed)}
       >
         <Menu iconShape="square">
-          {/* LOGO AND MENU ICON */}
           <MenuItem
             onClick={() => setIsCollapsed(!isCollapsed)}
             icon={isCollapsed ? <MenuOutlined /> : undefined}
@@ -112,10 +111,10 @@ const Sidebar = () => {
                   fontWeight="bold"
                   sx={{ m: '10px 0 0 0' }}
                 >
-                  Silas Bello
+                  Abdulahad Sheid
                 </Typography>
                 <Typography variant="h5" color={colors.greenAccent[500]}>
-                  COO DAFOSEAD
+                  ahadtech
                 </Typography>
               </Box>
             </Box>
