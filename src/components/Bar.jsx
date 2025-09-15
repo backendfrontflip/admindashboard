@@ -1,4 +1,3 @@
-// src/pages/BarChart.jsx
 import React from "react";
 import { useTheme } from "@mui/material";
 import {
@@ -13,20 +12,16 @@ import { Bar } from "react-chartjs-2";
 import { tokens } from "../theme";
 import { mockBarData as data } from "../data/mockData";
 
-// Register Chart.js components
 ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend);
 
 const BarChart = ({ isDashboard = false }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
-  // Extract categories (X-axis labels)
   const labels = data.map((item) => item.country);
 
-  // Datasets keys
   const keys = ["hot dog", "burger", "sandwich", "kebab", "fries", "donut"];
 
-  // Chart.js dataset
   const chartData = {
     labels,
     datasets: keys.map((key, i) => ({
@@ -37,7 +32,6 @@ const BarChart = ({ isDashboard = false }) => {
     })),
   };
 
-  // Chart options
   const options = {
     responsive: true,
     plugins: {

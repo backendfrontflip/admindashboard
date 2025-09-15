@@ -1,4 +1,3 @@
-// src/pages/Team.jsx
 import React, { useState } from "react";
 import {
   Box,

@@ -49,7 +49,6 @@ const Calendar = () => {
       <Header title="CALENDAR" subtitle="Full Calendar Interactive Page" />
 
       <Box display="flex" justifyContent="space-between">
-        {/* Event List Sidebar */}
         <Box
           flex="1 1 20%"
           backgroundColor={colors.primary[400]}
@@ -85,7 +84,6 @@ const Calendar = () => {
           </List>
         </Box>
 
-        {/* Calendar */}
         <Box
           flex="1 1 80%"
           backgroundColor={colors.primary[400]}

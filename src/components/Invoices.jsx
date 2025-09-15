@@ -1,4 +1,3 @@
-// src/pages/Invoices.jsx
 import React, { useState } from "react";
 import {
   Box,
@@ -21,7 +20,6 @@ const Invoices = ({ isDashboard = false }) => {
   const [selectedColumn, setSelectedColumn] = useState("");
   const [selectedValue, setSelectedValue] = useState("");
 
-  // Extract unique values for selected column
   const getUniqueValues = (columnKey) => {
     const values = mockDataInvoices.map((row) => row[columnKey]);
     return [...new Set(values)];

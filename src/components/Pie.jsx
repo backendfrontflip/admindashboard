@@ -1,4 +1,3 @@
-// src/pages/PieChart.jsx
 import React from "react";
 import { useTheme } from "@mui/material";
 import { Pie } from "react-chartjs-2";

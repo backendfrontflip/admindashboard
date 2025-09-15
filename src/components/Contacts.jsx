@@ -21,7 +21,6 @@ const Contacts = ({ isDashboard = false }) => {
   const [selectedColumn, setSelectedColumn] = useState("");
   const [selectedValue, setSelectedValue] = useState("");
 
-  // Extract unique values for selected column
   const getUniqueValues = (columnKey) => {
     const values = mockDataContacts.map((row) => row[columnKey]);
     return [...new Set(values)];

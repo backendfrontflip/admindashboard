@@ -17,6 +17,7 @@ import {
   TimelineOutlined, 
   MapOutlined,
   MenuOutlined} from '@mui/icons-material';
+import userImg from '/assets/user.png';
 
   const Item = ({ title, to, icon, selected, setSelected }) => {
     const theme = useTheme();
@@ -100,7 +101,7 @@ const Sidebar = () => {
                   alt="profile-user"
                   width="100px"
                   height="100px"
-                  src={`/assets/user.png`}
+                  src={userImg}
                   style={{ cursor: 'pointer', borderRadius: '50%' }}
                 />
               </Box>

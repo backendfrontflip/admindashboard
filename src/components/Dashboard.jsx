@@ -48,7 +48,7 @@ const Dashboard = () => {
   </ChartCard>
 </Grid>
 
-<Grid item xs={20} md={12}>   {/* ✅ full width */}
+<Grid item xs={20} md={12}>   
   <ChartCard title="Geography Data" subtitle="Regional activity" isDashboard>
     <Geography isDashboard />
   </ChartCard>

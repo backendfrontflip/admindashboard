@@ -1,40 +1,37 @@
-import React from 'react'
-import { Route, Routes } from 'react-router-dom';
-import { ColorModeContext, useMode } from './theme'
-import { CssBaseline, ThemeProvider } from '@mui/material'
-import Topbar from './pages/Topbar.jsx'
-import Sidebar from './pages/Sidebar.jsx'
-import Dashsboard from './components/Dashboard.jsx'
-import Team from './components/Team.jsx'
-import Invoices from './components/Invoices.jsx'
-import Contacts from './components/Contacts.jsx'
-import Bar from './components/Bar.jsx'
-import Form from './components/Form.jsx'
-import Line from './components/Line.jsx'
-import Pie from './components/Pie.jsx'
-import Geography from './components/Geography.jsx'
-import FAQ from './components/FAQ.jsx'
-import Calender from './components/Calendar.jsx'
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-
+import React from "react";
+import { Route, Routes, Navigate } from "react-router-dom";
+import { ColorModeContext, useMode } from "./theme";
+import { CssBaseline, ThemeProvider } from "@mui/material";
+import Topbar from "./pages/Topbar.jsx";
+import Sidebar from "./pages/Sidebar.jsx";
+import Dashboard from "./components/Dashboard.jsx";
+import Team from "./components/Team.jsx";
+import Invoices from "./components/Invoices.jsx";
+import Contacts from "./components/Contacts.jsx";
+import Bar from "./components/Bar.jsx";
+import Form from "./components/Form.jsx";
+import Line from "./components/Line.jsx";
+import Pie from "./components/Pie.jsx";
+import Geography from "./components/Geography.jsx";
+import FAQ from "./components/FAQ.jsx";
+import Calender from "./components/Calendar.jsx";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const [theme, colorMode] = useMode();
 
-  return ( 
-    
+  return (
     <ColorModeContext.Provider value={colorMode}>
       <ToastContainer position="top-right" autoClose={3000} />
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        {/* Your application components go here */}
-        <div className='app'>
+        <div className="app">
           <Sidebar />
-          <main className='content'>
+          <main className="content">
             <Topbar />
             <Routes>
-              <Route path="/" element={<Dashsboard />} />
+              <Route path="/" element={<Dashboard />} />
               <Route path="/team" element={<Team />} />
               <Route path="/contacts" element={<Contacts />} />
               <Route path="/invoices" element={<Invoices />} />
@@ -45,12 +42,13 @@ function App() {
               <Route path="/geography" element={<Geography />} />
               <Route path="/faq" element={<FAQ />} />
               <Route path="/calendar" element={<Calender />} />
+              <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
           </main>
         </div>
       </ThemeProvider>
     </ColorModeContext.Provider>
-  )
+  );
 }
 
-export default App
+export default App;

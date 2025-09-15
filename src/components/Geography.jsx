@@ -1,4 +1,3 @@
-// src/pages/Geography.jsx
 import React from "react";
 import { ResponsiveChoropleth } from "@nivo/geo";
 import { tokens } from "../theme";
@@ -13,10 +12,10 @@ const Geography = ({ isDashboard = false }) => {
   return (
     <Box
       sx={{
-        height: isDashboard ? "250px" : "75vh", // compact in dashboard, full-page otherwise
+        height: isDashboard ? "250px" : "75vh", 
         width: "100%",
         borderRadius: "12px",
-        overflow: "hidden", // prevents map overflow
+        overflow: "hidden", 
       }}
     >
       <ResponsiveChoropleth
@@ -24,7 +23,7 @@ const Geography = ({ isDashboard = false }) => {
         features={geoFeatures.features}
         margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
         domain={[0, 1000000]}
-        unknownColor={colors.grey[700]} // dark grey for unknown regions
+        unknownColor={colors.grey[700]} 
         label="properties.name"
         valueFormat=".2s"
         projectionScale={isDashboard ? 40 : 150}
@@ -32,9 +31,9 @@ const Geography = ({ isDashboard = false }) => {
         projectionRotation={[0, 0, 0]}
         colors="nivo" // default color scheme
         enableGraticule={true}
-        graticuleLineColor={colors.grey[400]} // grid lines adapt to theme
+        graticuleLineColor={colors.grey[400]} 
         borderWidth={1.5}
-        borderColor={colors.grey[100]} // borders adapt to theme
+        borderColor={colors.grey[100]} 
         theme={{
           textColor: colors.grey[100],
           fontSize: 12,
